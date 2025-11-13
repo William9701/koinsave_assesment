@@ -4,13 +4,15 @@ const transactionController = require('../controllers/transactionController');
 const authenticate = require('../middleware/auth');
 const { validate, schemas } = require('../middleware/validation');
 const { transactionLimiter } = require('../middleware/rateLimiter');
+const idempotencyMiddleware = require('../middleware/idempotency');
 
 /**
  * @route   POST /api/transactions/transfer
  * @desc    Transfer money to another user
  * @access  Private
+ * @idempotency Supported via Idempotency-Key header
  */
-router.post('/transfer', authenticate, transactionLimiter, validate(schemas.transfer), transactionController.transfer);
+router.post('/transfer', authenticate, idempotencyMiddleware, transactionLimiter, validate(schemas.transfer), transactionController.transfer);
 
 /**
  * @route   GET /api/transactions/history
