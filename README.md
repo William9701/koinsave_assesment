@@ -14,6 +14,7 @@ A professional-grade RESTful API for a fintech application with user authenticat
   - Mock money transfers between users
   - Overdraft prevention
   - Double-spending protection with database transactions
+  - **Idempotency support** - Prevents duplicate transactions
   - Transaction history and analytics
 
 - ✅ **Security & Best Practices**
@@ -53,9 +54,11 @@ koinsave_assesment/
 │   │   └── transactionController.js  # Transaction logic
 │   ├── models/
 │   │   ├── User.js              # User model
-│   │   └── Transaction.js       # Transaction model
+│   │   ├── Transaction.js       # Transaction model
+│   │   └── Idempotency.js       # Idempotency key management
 │   ├── middleware/
 │   │   ├── auth.js              # JWT authentication middleware
+│   │   ├── idempotency.js       # Idempotency middleware
 │   │   ├── validation.js        # Input validation schemas
 │   │   ├── rateLimiter.js       # Rate limiting configuration
 │   │   ├── errorHandler.js      # Global error handling
@@ -69,7 +72,8 @@ koinsave_assesment/
 │   └── server.js                # Server entry point
 ├── __tests__/
 │   ├── auth.test.js             # Authentication tests
-│   └── transactions.test.js     # Transaction tests
+│   ├── transactions.test.js     # Transaction tests
+│   └── idempotency.test.js      # Idempotency tests
 ├── logs/                        # Application logs (auto-generated)
 ├── .env                         # Environment variables (not in git)
 ├── .env.example                 # Environment variables template
@@ -79,6 +83,15 @@ koinsave_assesment/
 ├── Dockerfile                   # Docker configuration
 ├── render.yaml                  # Render deployment config
 └── README.md
+```
+
+## Live Deployment
+
+🚀 **Production URL:** https://koinsave-fintech-api.onrender.com
+
+Test the API:
+```bash
+curl https://koinsave-fintech-api.onrender.com/health
 ```
 
 ## Getting Started
@@ -137,7 +150,7 @@ koinsave_assesment/
 ### Base URL
 ```
 Local: http://localhost:3000
-Production: https://your-app.onrender.com
+Production: https://koinsave-fintech-api.onrender.com
 ```
 
 ### Authentication Endpoints
@@ -226,6 +239,37 @@ Content-Type: application/json
 }
 ```
 
+
+
+#### Transfer Money with Idempotency (Recommended)
+```http
+POST /api/transactions/transfer
+Authorization: Bearer <token>
+Idempotency-Key: <unique-uuid>
+Content-Type: application/json
+
+{
+  "recipient_email": "recipient@example.com",
+  "amount": 100.50,
+  "description": "Payment for services"
+}
+```
+
+**What is Idempotency?**
+Idempotency prevents duplicate transactions. If you retry the same request with the same `Idempotency-Key`, you'll get the cached response instead of creating a duplicate transaction.
+
+**How to use:**
+1. Generate a unique UUID for each transaction (e.g., `uuidv4()`)
+2. Add it as the `Idempotency-Key` header
+3. If the request fails (network error, timeout), retry with the SAME key
+4. The server will return the original response - no double charge!
+
+**Response Scenarios:**
+- First request: Processes normally (201 Created)
+- Duplicate request (same key): Returns cached response (201 Created, same transaction ID)
+- Same key, different params: Returns 422 error
+
+See the Postman collection for idempotency examples.
 #### Get Balance
 ```http
 GET /api/transactions/balance/current
@@ -285,6 +329,7 @@ Import the `postman_collection.json` file into Postman for complete API document
 - **Overdraft Prevention:** Checks balance before transfer
 - **Double-Spending Protection:** Database transactions with row-level locking
 - **Atomic Operations:** All balance updates are atomic
+- **Idempotency Support:** Prevents duplicate transactions with idempotency keys
 - **Concurrency Handling:** Tested with concurrent transfers
 
 ### 5. Logging
@@ -308,6 +353,7 @@ npm test -- --coverage
 ### Test Coverage
 - Authentication flows
 - Transaction operations
+- Idempotency (duplicate prevention)
 - Validation rules
 - Error scenarios
 - Concurrency and race conditions
