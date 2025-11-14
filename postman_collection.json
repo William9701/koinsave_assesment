@@ -25,8 +25,12 @@
         "header": [],
         "url": {
           "raw": "{{base_url}}/health",
-          "host": ["{{base_url}}"],
-          "path": ["health"]
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
         },
         "description": "Check if the server is running"
       }
@@ -65,8 +69,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/auth/register",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "register"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
             },
             "description": "Register a new user with email, password, and full name. Returns user details and JWT token. Initial balance is set to 1000."
           }
@@ -102,8 +112,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/auth/login",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
             },
             "description": "Login with email and password. Returns user details and JWT token."
           }
@@ -120,8 +136,14 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/auth/profile",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "profile"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "profile"
+              ]
             },
             "description": "Get current user's profile information. Requires authentication."
           }
@@ -151,8 +173,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/transactions/transfer",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", "transfer"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
             },
             "description": "Transfer money to another user. Includes overdraft prevention and double-spending checks. Requires authentication."
           }
@@ -169,8 +197,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/transactions/balance/current",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", "balance", "current"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "balance",
+                "current"
+              ]
             },
             "description": "Get current user's account balance. Requires authentication."
           }
@@ -187,8 +222,14 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/transactions/history?limit=50",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", "history"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "history"
+              ],
               "query": [
                 {
                   "key": "limit",
@@ -212,8 +253,14 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/transactions/:transactionId",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", ":transactionId"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                ":transactionId"
+              ],
               "variable": [
                 {
                   "key": "transactionId",
@@ -237,8 +284,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/transactions/stats/summary",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", "stats", "summary"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "stats",
+                "summary"
+              ]
             },
             "description": "Get transaction statistics including total sent, received, and net flow. Requires authentication."
           }
@@ -264,8 +318,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/auth/register",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "register"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
             },
             "description": "Register a second user for testing transfers between users."
           }
@@ -290,8 +350,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/transactions/transfer",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", "transfer"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
             },
             "description": "Test overdraft prevention - should fail with insufficient balance error."
           }
@@ -316,8 +382,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/transactions/transfer",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", "transfer"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
             },
             "description": "Test validation - should fail with negative amount."
           }
@@ -342,8 +414,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/transactions/transfer",
-              "host": ["{{base_url}}"],
-              "path": ["api", "transactions", "transfer"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
             },
             "description": "Test recipient validation - should fail with recipient not found error."
           }
@@ -355,10 +433,232 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/auth/profile",
-              "host": ["{{base_url}}"],
-              "path": ["api", "auth", "profile"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "profile"
+              ]
             },
             "description": "Test authentication - should fail without token."
+          }
+        },
+        {
+          "name": "Idempotency - First Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "test-idempotency-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient_email\": \"jane.smith@example.com\",\n  \"amount\": 50,\n  \"description\": \"Idempotency test\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/transactions/transfer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
+            },
+            "description": "First transfer with idempotency key - will process and cache response."
+          }
+        },
+        {
+          "name": "Idempotency - Duplicate Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "test-idempotency-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient_email\": \"jane.smith@example.com\",\n  \"amount\": 50,\n  \"description\": \"Idempotency test\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/transactions/transfer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
+            },
+            "description": "Duplicate with same key - returns cached response, NO DOUBLE CHARGE!"
+          }
+        },
+        {
+          "name": "Idempotency - Different Params",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "test-idempotency-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient_email\": \"jane.smith@example.com\",\n  \"amount\": 75,\n  \"description\": \"Different amount\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/transactions/transfer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
+            },
+            "description": "Same key, different params - returns 422 error."
+          }
+        },
+        {
+          "name": "Idempotency - First Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "test-idempotency-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient_email\": \"jane.smith@example.com\",\n  \"amount\": 50,\n  \"description\": \"Idempotency test\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/transactions/transfer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
+            },
+            "description": "First transfer with idempotency key - will process and cache response."
+          }
+        },
+        {
+          "name": "Idempotency - Duplicate Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "test-idempotency-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient_email\": \"jane.smith@example.com\",\n  \"amount\": 50,\n  \"description\": \"Idempotency test\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/transactions/transfer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
+            },
+            "description": "Duplicate with same key - returns cached response, NO DOUBLE CHARGE!"
+          }
+        },
+        {
+          "name": "Idempotency - Different Params",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{auth_token}}"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "test-idempotency-key-12345"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipient_email\": \"jane.smith@example.com\",\n  \"amount\": 75,\n  \"description\": \"Different amount\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/transactions/transfer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "transactions",
+                "transfer"
+              ]
+            },
+            "description": "Same key, different params - returns 422 error."
           }
         }
       ]
