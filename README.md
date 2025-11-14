@@ -105,7 +105,7 @@ curl https://koinsave-fintech-api.onrender.com/health
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:William9701/koinsave_assesment.git
    cd koinsave_assesment
    ```
 
